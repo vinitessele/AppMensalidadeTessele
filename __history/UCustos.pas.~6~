@@ -1,0 +1,40 @@
+unit UCustos;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
+  UModelo, FMX.Layouts, FMX.Objects, FMX.Controls.Presentation, FMX.Edit,
+  FMX.ListBox;
+
+type
+  TFCustos = class(TFModelo)
+    Layout2: TLayout;
+    EditDescricao: TEdit;
+    EditValor: TEdit;
+    ComboBoxTipo: TComboBox;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCustos: TFCustos;
+
+implementation
+
+{$R *.fmx}
+
+uses UDM;
+
+procedure TFCustos.FormShow(Sender: TObject);
+begin
+  inherited;
+  dm.FDQCustos.Active := True;
+end;
+
+end.

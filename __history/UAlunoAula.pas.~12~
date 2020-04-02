@@ -1,0 +1,54 @@
+unit UAlunoAula;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes,
+  System.Variants,
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
+  UModelo, FMX.Layouts, FMX.Objects, FMX.Controls.Presentation, FMX.ListBox,
+  System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt,
+  FMX.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope,
+  FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
+  FMX.ListView;
+
+type
+  TFAlunoAula = class(TFModelo)
+    LayoutPesquisaAula: TLayout;
+    ComboBoxAula: TComboBox;
+    BindSourceDB1: TBindSourceDB;
+    BindingsList1: TBindingsList;
+    LinkListControlToField1: TLinkListControlToField;
+    LayoutAlunos: TLayout;
+    ListViewAlunos: TListView;
+    BindSourceDB2: TBindSourceDB;
+    LinkListControlToField2: TLinkListControlToField;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FAlunoAula: TFAlunoAula;
+
+implementation
+
+{$R *.fmx}
+
+uses UDM, UPrincipal;
+
+procedure TFAlunoAula.FormShow(Sender: TObject);
+begin
+  inherited;
+  dm.FDQAlunosALL.Active := True;
+  dm.FDQAulasAll.Close;
+  dm.FDQAulasAll.Open();
+  dm.FDQAlunoXaula.Active := True;
+  dm.FDQAlunoXaula.Close;
+  dm.FDQAlunoXaula.Open();
+
+end;
+
+end.
