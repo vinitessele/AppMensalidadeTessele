@@ -116,7 +116,7 @@ begin
     dm.FDQAulasAllaula_id.AsString;
   dm.FDQAlunoMatricula.Open();
   TabItem3.Enabled := True;
-  TabControl1.TabIndex := 1;
+  TabControl1.TabIndex := 2;
 end;
 
 procedure TFLanctFalta.Calendar1DayClick(Sender: TObject);

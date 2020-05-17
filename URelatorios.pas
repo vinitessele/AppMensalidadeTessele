@@ -10,7 +10,8 @@ uses
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
   FMX.ListView, FMX.ListBox, FMX.DateTimeCtrls, System.Rtti,
   System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt,
-  FMX.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope, FMX.Ani, FMX.Edit;
+  FMX.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope, FMX.Ani, FMX.Edit,
+  MultiDetailAppearanceU;
 
 type
   TFRelatorios = class(TFModelo)
@@ -52,6 +53,8 @@ type
     ListViewMensalidade: TListView;
     BindSourceDB4: TBindSourceDB;
     LinkListControlToField5: TLinkListControlToField;
+    BindSourceDB2: TBindSourceDB;
+    LinkListControlToField3: TLinkListControlToField;
     procedure FormShow(Sender: TObject);
     procedure BtnPesquisaClick(Sender: TObject);
     procedure btnPesquisaMensalidadeClick(Sender: TObject);
@@ -167,7 +170,7 @@ begin
   dm.FDQAulasAll.Close;
   dm.FDQAulasAll.Open();
   TabControl1.TabIndex := 0;
-  DateEdit1.Date := Date - 30;
+  DateEdit1.Date := Date - 90;
   DateEdit2.Date := Date;
   LayoutDetalhesFaltas.Visible := False;
   // PanelDatas.Margins.Top := FRelatorios.Height + 50;

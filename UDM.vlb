@@ -11,7 +11,7 @@ Coordinates=617,1,164,33
 Coordinates=402,53,159,33
 
 [FDQAulasAll]
-Coordinates=449,10,77,87
+Coordinates=337,420,77,87
 
 [FDQAlunoXaulaaluno_cpf]
 Coordinates=402,105,141,33
@@ -23,13 +23,13 @@ Coordinates=257,283,90,33
 Coordinates=402,157,152,33
 
 [FDQAlunosALL]
-Coordinates=112,10,91,249
+Coordinates=10,10,91,249
 
 [FDQAlunoXAulaAllalunoXaula_aula_id]
 Coordinates=617,53,203,33
 
 [FDQAlunoXAulaAll]
-Coordinates=332,10,107,105
+Coordinates=448,269,107,105
 
 [FDQAlunoXAulaAllalunoXaula_id]
 Coordinates=617,105,177,33
@@ -65,10 +65,10 @@ Coordinates=865,53,199,33
 Coordinates=865,157,172,33
 
 [FDQParametro]
-Coordinates=213,10,109,159
+Coordinates=609,10,109,159
 
 [FDQAlunoXaula]
-Coordinates=10,10,92,177
+Coordinates=507,10,92,177
 
 [FDQAlunoMatriculaaluno_id]
 Coordinates=222,188,152,33
@@ -92,7 +92,7 @@ Coordinates=865,365,175,33
 Coordinates=865,417,155,33
 
 [FDQChamada]
-Coordinates=130,200,93,141
+Coordinates=10,269,93,141
 
 [FDQAlunoMatriculaaluno_nome]
 Coordinates=846,464,171,33
@@ -104,7 +104,7 @@ Coordinates=151,488,200,33
 Coordinates=0,431,161,33
 
 [FDQAlunoMatricula]
-Coordinates=360,445,110,231
+Coordinates=111,10,110,231
 
 [FDQChamadachamada_aula_id]
 Coordinates=1116,1,168,33
@@ -176,22 +176,22 @@ Coordinates=1116,573,147,33
 Coordinates=1116,625,150,33
 
 [FDQMensalidade]
-Coordinates=477,369,128,177
+Coordinates=369,10,128,177
 
 [FDQValidaMensalidade]
-Coordinates=810,20,128,177
+Coordinates=231,10,128,177
 
 [FDQValidaAulasDadas]
-Coordinates=650,20,125,105
+Coordinates=565,269,125,105
 
 [FDQMensalidademensalidade_competencia]
 Coordinates=1116,677,228,33
 
 [FDQAulaDada]
-Coordinates=20,200,97,105
+Coordinates=826,269,97,105
 
 [FDQAulasGetDescricao]
-Coordinates=643,209,130,87
+Coordinates=197,420,130,87
 
 [FDQCustoscustofixo_tipo]
 Coordinates=1097,714,141,33
@@ -203,7 +203,7 @@ Coordinates=918,714,170,33
 Coordinates=719,714,190,33
 
 [FDQCustos]
-Coordinates=960,40,96,141
+Coordinates=113,269,96,141
 
 [WideStringField1]
 Coordinates=620,714,98,33
@@ -230,7 +230,7 @@ Coordinates=1126,766,96,33
 Coordinates=1057,785,68,33
 
 [FDQValidaChamda]
-Coordinates=330,210,107,141
+Coordinates=868,10,107,141
 
 [FDQAulasGetDescricaoaula_descricao]
 Coordinates=1382,105,204,33
@@ -239,7 +239,7 @@ Coordinates=1382,105,204,33
 Coordinates=1382,157,180,33
 
 [FDQCountAulas]
-Coordinates=170,380,93,69
+Coordinates=511,420,93,69
 
 [FDQCountAulasqteAulas]
 Coordinates=754,785,137,33
@@ -248,13 +248,13 @@ Coordinates=754,785,137,33
 Coordinates=1382,313,151,33
 
 [FDQAjuste]
-Coordinates=560,20,74,105
+Coordinates=10,420,74,105
 
 [FDQAjustealuno_nome]
 Coordinates=1038,825,128,33
 
 [FDQListMensPorAluno]
-Coordinates=10,360,128,123
+Coordinates=219,269,128,123
 
 [FDQListFaltasPorAlunochamada_id]
 Coordinates=1382,365,190,33
@@ -278,10 +278,10 @@ Coordinates=1382,625,140,33
 Coordinates=1382,677,216,33
 
 [FDQListFaltasPorAluno]
-Coordinates=450,210,130,141
+Coordinates=728,10,130,141
 
 [FDQListMensalidade]
-Coordinates=645,315,116,105
+Coordinates=700,269,116,105
 
 [FDQAjustechamada_data]
 Coordinates=889,825,139,33
@@ -320,7 +320,7 @@ Coordinates=1382,261,157,33
 Coordinates=625,785,124,33
 
 [FDQFalta]
-Coordinates=1170,100,93,105
+Coordinates=94,420,93,105
 Visible=True
 
 [FDQFaltaaluno_nome]
@@ -360,13 +360,13 @@ Coordinates=641,856,114,33
 Coordinates=1656,157,151,33
 
 [FDQFaixa]
-Coordinates=643,439,77,87
+Coordinates=424,420,77,87
 
 [FDQPresencaaula_id]
 Coordinates=522,856,117,33
 
 [FDQPresenca]
-Coordinates=23,206,81,123
+Coordinates=357,269,81,123
 
 [FDQAlunosALLaltrua]
 Coordinates=393,856,119,33
