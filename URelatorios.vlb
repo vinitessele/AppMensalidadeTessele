@@ -47,7 +47,7 @@ Coordinates=309,904,59,33
 Coordinates=529,904,153,33
 
 []
-Coordinates=636,285,121,123
+Coordinates=179,285,119,124
 Visible=True
 
 [RoundRect3]
@@ -80,19 +80,19 @@ Coordinates=885,619,137,51
 Coordinates=572,619,149,87
 
 [DM.FDQMensalidade]
-Coordinates=302,10,128,177
+Coordinates=160,10,128,177
 
 [DM.FDQAlunoMatricula]
-Coordinates=10,10,129,231
+Coordinates=10,290,129,231
 
 [DM.FDQAlunoXAulaAll]
 Coordinates=250,619,126,105
 
 [DM.FDQParametro]
-Coordinates=298,267,109,159
+Coordinates=400,280,109,159
 
 [DM.FDQValidaChamda]
-Coordinates=164,452,125,141
+Coordinates=150,440,125,141
 
 [DM.FDQCustos]
 Coordinates=895,452,96,141
@@ -107,13 +107,13 @@ Coordinates=768,452,101,141
 Coordinates=402,619,144,105
 
 [DM.FDQAlunoXaula]
-Coordinates=165,10,111,177
+Coordinates=20,10,111,177
 
 [DM.FDQValidaMensalidade]
-Coordinates=591,10,147,177
+Coordinates=490,10,147,177
 
 [DM.FDQAlunosALL]
-Coordinates=456,10,109,177
+Coordinates=350,10,109,249
 
 [DM.FDQAulasAll]
 Coordinates=380,330,96,33
@@ -132,7 +132,7 @@ Coordinates=881,319,82,33
 Coordinates=873,750,69,51
 
 [ListViewFaltas]
-Coordinates=10,267,89,159
+Coordinates=1240,140,89,159
 Visible=True
 LayerNames=
 
@@ -176,9 +176,6 @@ ModelLayerNames=
 ActiveLayerNames=
 EditingLayerName=
 
-[BindSourceDB2]
-Coordinates=179,285,93,123
-
 [ListViewDetalhasFaltas]
 Coordinates=1000,290,128,141
 Visible=True
@@ -193,7 +190,7 @@ Coordinates=10,750,64,51
 Coordinates=169,827,120,33
 
 [BindSourceDB3]
-Coordinates=783,267,133,159
+Coordinates=830,270,133,159
 
 [FloatAnimation2]
 Coordinates=158,206,95,33
@@ -203,8 +200,14 @@ Coordinates=490,280,117,159
 Visible=True
 
 [BindSourceDB4]
-Coordinates=670,290,121,123
+Coordinates=690,250,121,123
 
 [LayoutDetalheMensalidadeAluno]
-Coordinates=907,827,147,33
+Coordinates=907,827,176,33
+
+[DM.FDQPresenca]
+Coordinates=1120,130,100,123
+
+[DM.FDQFaixa]
+Coordinates=200,300,81,87
 

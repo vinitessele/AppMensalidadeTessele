@@ -42,8 +42,6 @@ type
     BindSourceDB5: TBindSourceDB;
     LinkListControlToField6: TLinkListControlToField;
     StyleBook1: TStyleBook;
-    BindSourceDB2: TBindSourceDB;
-    LinkListControlToField3: TLinkListControlToField;
     LayoutDetalhesFaltas: TLayout;
     FloatAnimation1: TFloatAnimation;
     btnFechar: TSpeedButton;

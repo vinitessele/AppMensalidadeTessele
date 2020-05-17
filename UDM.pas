@@ -94,10 +94,6 @@ type
     FDQAulasGetDescricaoaula_descricao: TStringField;
     FDQCountAulas: TFDQuery;
     FDQCountAulasqteAulas: TLargeintField;
-    FDQFalta: TFDQuery;
-    FDQFaltafalta: TWideStringField;
-    FDQFaltachamada_aluno_id: TIntegerField;
-    FDQFaltaaluno_nome: TStringField;
     FDQListFaltasPorAluno: TFDQuery;
     FDQListFaltasPorAlunochamada_id: TFDAutoIncField;
     FDQListFaltasPorAlunochamada_aluno_id: TIntegerField;
@@ -131,6 +127,15 @@ type
     FDQFaixa: TFDQuery;
     FDQFaixafaixa_id: TFDAutoIncField;
     FDQFaixafaixa_descricao: TStringField;
+    FDQPresenca: TFDQuery;
+    FDQPresencapresenca_id: TFDAutoIncField;
+    FDQPresencaaluno_id: TIntegerField;
+    FDQPresencadata: TDateField;
+    FDQPresencaaula_id: TIntegerField;
+    FDQFalta: TFDQuery;
+    FDQFaltafalta: TWideStringField;
+    FDQFaltachamada_aluno_id: TIntegerField;
+    FDQFaltaaluno_nome: TStringField;
     procedure FDConnection1AfterConnect(Sender: TObject);
     procedure FDConnection1BeforeConnect(Sender: TObject);
   private
@@ -193,6 +198,7 @@ begin
     ' peso decimal ,  ' + //
     ' altrua decimal, ' + //
     ' faixa varchar(15),' + //
+    ' status char(1), ' + //
     ' aluno_img blob) ';
   FDConnection1.ExecSQL(strSQL);
   // 'alter table aluno add dt_nascimento varchar(10);
@@ -265,6 +271,15 @@ begin
     ' alunoXaula_aula_id integer, ' + //
     ' foreign key (alunoXaula_aluno_id) references aluno(aluno_id),' + //
     ' foreign key (alunoXaula_aula_id) references aula(aula_id)) ';
+  FDConnection1.ExecSQL(strSQL);
+
+  strSQL := EmptyStr;
+  strSQL := //
+    ' create table IF NOT EXISTS presenca( ' + //
+    ' presenca_id integer not null primary key autoincrement,' + //
+    ' aluno_id integer,' + //
+    ' data date,' + //
+    ' aula_id integer) ';
   FDConnection1.ExecSQL(strSQL);
 end;
 

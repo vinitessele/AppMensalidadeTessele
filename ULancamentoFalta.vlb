@@ -33,7 +33,7 @@ Visible=True
 Coordinates=145,80,126,105
 
 [DM.FDQAlunosALL]
-Coordinates=450,490,109,177
+Coordinates=450,490,109,249
 
 [DM.FDQAulasAll]
 Coordinates=532,100,96,33
@@ -93,7 +93,7 @@ Coordinates=305,644,46,51
 Coordinates=117,644,64,33
 
 [ListViewAlunos]
-Coordinates=800,300,91,141
+Coordinates=1040,490,91,141
 Visible=True
 
 [btnpesquisa]
@@ -115,7 +115,7 @@ Coordinates=682,166,74,33
 Coordinates=682,221,59,33
 
 [BindSourceDB1]
-Coordinates=959,280,115,249
+Coordinates=1180,520,115,285
 
 [BindingsList1]
 Coordinates=0,586,82,33
@@ -177,6 +177,40 @@ Coordinates=682,408,53,33
 Coordinates=470,740,92,123
 
 [ComboBoxAulaAjuste]
-Coordinates=1110,320,123,123
+Coordinates=1150,360,123,123
+Visible=True
+
+[DM.FDQFaixa]
+Coordinates=22,187,81,87
+
+[DM.FDQFalta]
+Coordinates=139,1,93,105
+
+[TabItem4]
+Coordinates=682,463,59,33
+
+[Layout5]
+Coordinates=309,283,53,33
+
+[SpeedButton1]
+Coordinates=666,515,84,51
+
+[ComboBox1]
+Coordinates=581,777,84,123
+
+[Layout3]
+Coordinates=269,403,53,33
+
+[Label3]
+Coordinates=222,403,46,51
+
+[Layout4]
+Coordinates=163,403,53,33
+
+[DateEdit2]
+Coordinates=489,438,115,51
+
+[ListViewPresenca]
+Coordinates=1080,770,101,141
 Visible=True
 

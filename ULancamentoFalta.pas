@@ -46,15 +46,26 @@ type
     LinkListControlToField3: TLinkListControlToField;
     ComboBoxAulaAjuste: TComboBox;
     LinkListControlToField4: TLinkListControlToField;
+    TabItem4: TTabItem;
+    Layout3: TLayout;
+    Layout4: TLayout;
+    ComboBox1: TComboBox;
+    SpeedButton1: TSpeedButton;
+    Layout5: TLayout;
+    DateEdit2: TDateEdit;
+    Label3: TLabel;
+    ListViewPresenca: TListView;
+    LinkListControlToField5: TLinkListControlToField;
     procedure btnpesquisaClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure BtnConfirmaAlunoClick(Sender: TObject);
     procedure ListViewAlunosItemClick(const Sender: TObject;
       const AItem: TListViewItem);
     procedure Calendar1DayClick(Sender: TObject);
     procedure BtnProximoClick(Sender: TObject);
     procedure btnAjusteClick(Sender: TObject);
     procedure ListViewAjusteDeleteItem(Sender: TObject; AIndex: Integer);
+    procedure ListViewPresencaItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
   private
     { Private declarations }
   public
@@ -85,14 +96,6 @@ begin
     dm.FDQAulasGetDescricaoaula_id.AsInteger;
   dm.FDQAjuste.ParamByName('data').AsDate := DateEdit1.Date;
   dm.FDQAjuste.Open();
-
-end;
-
-procedure TFLanctFalta.BtnConfirmaAlunoClick(Sender: TObject);
-var
-  i: Integer;
-begin
-  inherited;
 
 end;
 
@@ -185,6 +188,7 @@ begin
   Calendar1.Date := Date;
   TabControl1.TabIndex := 0;
   DateEdit1.Date := Date;
+  DateEdit2.Date := Date;
 end;
 
 procedure TFLanctFalta.ListViewAjusteDeleteItem(Sender: TObject;
@@ -225,6 +229,21 @@ begin
   begin
     ShowMessage('Falta já Lançada!');
   end;
+end;
+
+procedure TFLanctFalta.ListViewPresencaItemClick(const Sender: TObject;
+const AItem: TListViewItem);
+begin
+  inherited;
+  dm.fdqpresenca.Active := True;
+  dm.fdqpresenca.Append;
+  dm.FDQPresencaaluno_id.AsInteger := dm.FDQAlunoMatriculaaluno_id.AsInteger;
+  dm.FDQPresencadata.AsDateTime := DateEdit2.DateTime;
+  dm.FDQPresencaaula_id.AsInteger :=
+    dm.FDQAlunoMatriculaalunoXaula_aula_id.AsInteger;
+  dm.fdqpresenca.Post;
+  dm.FDConnection1.CommitRetaining;
+    ShowMessage('1 Presença lançada');
 end;
 
 end.

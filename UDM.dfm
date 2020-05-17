@@ -27,6 +27,7 @@ object DM: TDM
       FieldName = 'aluno_id'
       Origin = 'aluno_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object FDQAlunosALLaluno_cpf: TStringField
       FieldName = 'aluno_cpf'
@@ -135,9 +136,10 @@ object DM: TDM
     Connection = FDConnection1
     SQL.Strings = (
       'select * from aluno as a'
+      'where a.status <> '#39'I'#39
       
-        'where not exists (select * from alunoXaula as b where b.alunoXau' +
-        'la_aluno_id = a.aluno_id and b.alunoXaula_aula_id =:aula)')
+        'and not exists (select * from alunoXaula as b where b.alunoXaula' +
+        '_aluno_id = a.aluno_id and b.alunoXaula_aula_id =:aula)')
     Left = 296
     Top = 16
     ParamData = <
@@ -280,6 +282,7 @@ object DM: TDM
     end
   end
   object FDQChamada: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from chamada')
@@ -568,8 +571,8 @@ object DM: TDM
     SQL.Strings = (
       'select * from aula'
       'where aula_descricao =:descricao')
-    Left = 584
-    Top = 24
+    Left = 608
+    Top = 16
     ParamData = <
       item
         Name = 'DESCRICAO'
@@ -589,7 +592,6 @@ object DM: TDM
     end
   end
   object FDQCountAulas: TFDQuery
-    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select count(*) as qteAulas from aulasdadas'
@@ -622,60 +624,6 @@ object DM: TDM
       Origin = 'qteAulas'
       ProviderFlags = []
       ReadOnly = True
-    end
-  end
-  object FDQFalta: TFDQuery
-    Active = True
-    Connection = FDConnection1
-    SQL.Strings = (
-      
-        'select ('#39'Faltas: '#39'||count(*)) as falta, c.chamada_aluno_id, al.a' +
-        'luno_nome from chamada c '
-      'inner join aluno al on c.chamada_aluno_id= al.aluno_id'
-      'where c.chamada_aula_id =:aula'
-      'and c.chamada_data between :dataini and :datafim'
-      'group by c.chamada_aluno_id')
-    Left = 40
-    Top = 152
-    ParamData = <
-      item
-        Name = 'AULA'
-        DataType = ftInteger
-        ParamType = ptInput
-        Value = Null
-      end
-      item
-        Name = 'DATAINI'
-        DataType = ftDate
-        ParamType = ptInput
-        Value = Null
-      end
-      item
-        Name = 'DATAFIM'
-        DataType = ftDate
-        ParamType = ptInput
-        Value = Null
-      end>
-    object FDQFaltafalta: TWideStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'falta'
-      Origin = 'falta'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 32767
-    end
-    object FDQFaltachamada_aluno_id: TIntegerField
-      FieldName = 'chamada_aluno_id'
-      Origin = 'chamada_aluno_id'
-      Required = True
-    end
-    object FDQFaltaaluno_nome: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'aluno_nome'
-      Origin = 'aluno_nome'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 60
     end
   end
   object FDQListFaltasPorAluno: TFDQuery
@@ -727,7 +675,8 @@ object DM: TDM
         'a.aluno_id From mensalidade m'
       'inner join aluno a on a.aluno_id = m.mensalidade_aluno_id'
       'where m.mensalidade_aula_id =:aula'
-      'and m.mensalidade_competencia =:competencia')
+      'and m.mensalidade_competencia =:competencia'
+      'and a.status <>'#39'I'#39)
     Left = 136
     Top = 352
     ParamData = <
@@ -772,6 +721,7 @@ object DM: TDM
       'inner join aluno a on a.aluno_id = m.mensalidade_aluno_id'
       'where m.mensalidade_aula_id =:aula'
       'and a.aluno_id =:aluno'
+      'and a.status <>'#39'I'#39
       'order by m.mensalidade_competencia desc')
     Left = 248
     Top = 352
@@ -818,7 +768,7 @@ object DM: TDM
       'inner join aluno al on c.chamada_aluno_id= al.aluno_id'
       'where c.chamada_aula_id =:aula'
       'and c.chamada_data = :data')
-    Left = 680
+    Left = 688
     Top = 24
     ParamData = <
       item
@@ -850,20 +800,111 @@ object DM: TDM
     end
   end
   object FDQFaixa: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from faixa')
-    Left = 128
-    Top = 160
+    Left = 112
+    Top = 144
     object FDQFaixafaixa_id: TFDAutoIncField
       FieldName = 'faixa_id'
       Origin = 'faixa_id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object FDQFaixafaixa_descricao: TStringField
       FieldName = 'faixa_descricao'
       Origin = 'faixa_descricao'
       Size = 15
+    end
+  end
+  object FDQPresenca: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from presenca')
+    Left = 104
+    Top = 296
+    object FDQPresencapresenca_id: TFDAutoIncField
+      FieldName = 'presenca_id'
+      Origin = 'presenca_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object FDQPresencaaluno_id: TIntegerField
+      FieldName = 'aluno_id'
+      Origin = 'aluno_id'
+    end
+    object FDQPresencadata: TDateField
+      FieldName = 'data'
+      Origin = 'data'
+    end
+    object FDQPresencaaula_id: TIntegerField
+      FieldName = 'aula_id'
+      Origin = 'aula_id'
+    end
+  end
+  object FDQFalta: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      
+        'select c.chamada_aluno_id, al.aluno_nome, ('#39'Faltas: '#39'||count(*))' +
+        ' as falta '
+      'from chamada c '
+      'inner join aluno al on c.chamada_aluno_id= al.aluno_id'
+      'where c.chamada_aula_id =:aula'
+      'and c.chamada_data between :dataini and :datafim'
+      'group by c.chamada_aluno_id'
+      'union '
+      
+        'select p.aluno_id, al.aluno_nome,('#39'Presen'#231'a: '#39'||count(*)) as pre' +
+        'senca'
+      ' from presenca p'
+      'inner join aluno al on p.aluno_id = al.aluno_id'
+      'where p.aula_id =:aula'
+      'and p.data between :dataini and :datafim'
+      'group by p.aluno_id'
+      '')
+    Left = 40
+    Top = 144
+    ParamData = <
+      item
+        Name = 'AULA'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 1
+      end
+      item
+        Name = 'DATAINI'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = 43466d
+      end
+      item
+        Name = 'DATAFIM'
+        DataType = ftDate
+        ParamType = ptInput
+        Value = 44012d
+      end>
+    object FDQFaltafalta: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'falta'
+      Origin = 'falta'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 32767
+    end
+    object FDQFaltachamada_aluno_id: TIntegerField
+      FieldName = 'chamada_aluno_id'
+      Origin = 'chamada_aluno_id'
+      Required = True
+    end
+    object FDQFaltaaluno_nome: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'aluno_nome'
+      Origin = 'aluno_nome'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 60
     end
   end
 end
