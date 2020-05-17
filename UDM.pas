@@ -14,13 +14,6 @@ type
   TDM = class(TDataModule)
     FDConnection1: TFDConnection;
     FDQAlunosALL: TFDQuery;
-    FDQAlunosALLaluno_id: TFDAutoIncField;
-    FDQAlunosALLaluno_cpf: TStringField;
-    FDQAlunosALLaluno_nome: TStringField;
-    FDQAlunosALLaluno_celular: TStringField;
-    FDQAlunosALLaluno_email: TStringField;
-    FDQAlunosALLaluno_observacao: TStringField;
-    FDQAlunosALLaluno_img: TBlobField;
     FDQParametro: TFDQuery;
     FDQParametroparametro_nome: TStringField;
     FDQParametroparametro_logo: TBlobField;
@@ -124,6 +117,20 @@ type
     FDQAjustealuno_nome: TStringField;
     FDQAjustechamada_data: TDateField;
     FDQAjustechamada_id: TFDAutoIncField;
+    FDQAlunosALLaluno_id: TFDAutoIncField;
+    FDQAlunosALLaluno_cpf: TStringField;
+    FDQAlunosALLaluno_nome: TStringField;
+    FDQAlunosALLaluno_celular: TStringField;
+    FDQAlunosALLaluno_email: TStringField;
+    FDQAlunosALLaluno_observacao: TStringField;
+    FDQAlunosALLaluno_img: TBlobField;
+    FDQAlunosALLdt_nascimento: TStringField;
+    FDQAlunosALLpeso: TLargeintField;
+    FDQAlunosALLaltrua: TLargeintField;
+    FDQAlunosALLfaixa: TStringField;
+    FDQFaixa: TFDQuery;
+    FDQFaixafaixa_id: TFDAutoIncField;
+    FDQFaixafaixa_descricao: TStringField;
     procedure FDConnection1AfterConnect(Sender: TObject);
     procedure FDConnection1BeforeConnect(Sender: TObject);
   private
@@ -182,8 +189,24 @@ begin
     ' aluno_celular varchar(12),   ' + //
     ' aluno_email varchar(100),    ' + //
     ' aluno_observacao varchar(200),  ' + //
+    ' dt_nascimento varchar(10),  ' + //
+    ' peso decimal ,  ' + //
+    ' altrua decimal, ' + //
+    ' faixa varchar(15),' + //
     ' aluno_img blob) ';
   FDConnection1.ExecSQL(strSQL);
+  // 'alter table aluno add dt_nascimento varchar(10);
+  // 'alter table aluno add peso decimal;
+  // 'alter table aluno add altrua decimal;
+  // 'alter table aluno add faixa varchar(15);
+
+  strSQL := EmptyStr;
+  strSQL := //
+    ' create table IF NOT EXISTS faixa(' + //
+    ' faixa_id integer not null primary key autoincrement,' + //
+    ' faixa_descricao varchar(15))';
+  FDConnection1.ExecSQL(strSQL);
+
   strSQL := EmptyStr;
   strSQL := //
     ' create table IF NOT EXISTS aula( ' + //

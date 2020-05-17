@@ -1,110 +1,208 @@
 ﻿[Layout5]
-Coordinates=596,478,60,36
+Coordinates=596,478,53,33
 
 [CircleFotoCliente]
-Coordinates=456,478,114,36
+Coordinates=456,478,99,33
 
 [LabelMenu]
-Coordinates=241,248,78,58
+Coordinates=241,248,68,51
 
 [EditEmail]
-Coordinates=428,248,69,58
+Coordinates=428,248,61,51
 
 [Layout1]
-Coordinates=222,478,60,36
+Coordinates=222,478,53,33
 
 [VertScrollBox2]
-Coordinates=96,478,100,36
+Coordinates=96,478,88,33
 
 [Layout3]
-Coordinates=10,478,60,36
+Coordinates=10,478,53,33
 
 [RoundRect3]
-Coordinates=697,416,86,36
+Coordinates=697,416,74,33
 
 [Image1]
-Coordinates=345,248,57,58
+Coordinates=345,248,49,51
 
 [Layout7]
-Coordinates=611,416,60,36
+Coordinates=611,416,53,33
 
 [ToolBar1]
-Coordinates=518,416,67,36
+Coordinates=518,416,58,33
 
 [Layout6]
-Coordinates=432,416,60,36
+Coordinates=432,416,53,33
 
 [TabItem1]
-Coordinates=337,416,69,36
+Coordinates=337,416,59,33
 
 [ListViewCliente]
-Coordinates=290,10,107,212
+Coordinates=1190,310,90,177
 Visible=True
 
 [ActionList1]
-Coordinates=339,449,78,36
+Coordinates=339,449,70,33
 
 [EditCpfCliente]
-Coordinates=613,248,97,58
+Coordinates=613,248,85,51
 
 [btnInf]
-Coordinates=114,332,47,58
+Coordinates=114,332,42,51
 
 [VertScrollBox1]
-Coordinates=211,416,100,36
+Coordinates=211,416,88,33
 
 [Rectangle2]
-Coordinates=105,416,80,36
+Coordinates=105,416,69,33
 
 [TabItem2]
-Coordinates=10,416,69,36
+Coordinates=10,416,59,33
 
 [LabelMenuModelo]
-Coordinates=500,10,120,58
+Coordinates=500,10,104,51
 
 [StyleBook1]
-Coordinates=589,56,80,36
+Coordinates=589,56,70,33
 
 [Layout4]
-Coordinates=627,332,60,36
+Coordinates=627,332,53,33
 
 [ActionPhotoLibrary]
-Coordinates=555,111,124,36
+Coordinates=555,111,110,33
 
 [EditNomeCliente]
-Coordinates=187,332,111,58
+Coordinates=187,332,96,51
 
 [bntMenu]
-Coordinates=523,248,64,58
+Coordinates=523,248,57,51
 
 [TabControl1]
-Coordinates=516,332,85,36
+Coordinates=516,332,74,33
 
 [Rectangle1]
-Coordinates=410,332,80,36
+Coordinates=410,332,69,33
 
 [BindingsList1]
-Coordinates=589,276,91,36
+Coordinates=589,276,82,33
 
 [EditCelular]
-Coordinates=10,332,78,58
+Coordinates=10,332,68,51
 
 [Layout2]
-Coordinates=324,332,60,36
+Coordinates=324,332,53,33
 
 [DM.FDQAlunosALL]
-Coordinates=100,10,127,36
+Coordinates=100,10,109,33
 Visible=False
 
 []
-Coordinates=162,248,53,58
+Coordinates=128,62,79,33
 
 [BindSourceDB1]
-Coordinates=100,10,115,234
+Coordinates=960,310,96,267
 
 [CircleAddAluno]
-Coordinates=308,478,122,36
+Coordinates=308,478,92,33
 
 [BtnConfirmaAluno]
-Coordinates=10,248,126,58
+Coordinates=10,248,105,51
+
+[DM.FDQValidaChamda]
+Coordinates=318,548,125,141
+
+[Layout8]
+Coordinates=110,646,53,33
+
+[Memo1]
+Coordinates=51,415,49,51
+
+[DM.FDQListFaltasPorAluno]
+Coordinates=477,533,149,141
+
+[DM.FDQAulasAll]
+Coordinates=477,387,96,87
+
+[DM.FDQValidaAulasDadas]
+Coordinates=748,144,144,105
+
+[DM.FDQAulaDada]
+Coordinates=149,188,102,105
+
+[DM.FDQMensalidade]
+Coordinates=283,1,128,177
+
+[DM.FDQListMensalidade]
+Coordinates=748,287,135,105
+
+[DM.FDQChamada]
+Coordinates=20,209,101,141
+
+[DM.FDQCountAulas]
+Coordinates=718,716,112,69
+
+[DM.FDQAlunoXAulaAll]
+Coordinates=748,815,126,105
+
+[DM.FDQCustos]
+Coordinates=900,30,96,141
+
+[DM.FDQParametro]
+Coordinates=0,0,109,159
+
+[DM.FDQFalta]
+Coordinates=688,1,93,105
+
+[DM.FDQAjuste]
+Coordinates=477,87,86,105
+
+[DM.FDQValidaMensalidade]
+Coordinates=110,396,147,177
+
+[DM.FDQListMensPorAluno]
+Coordinates=748,551,145,123
+
+[DM.FDQAlunoMatricula]
+Coordinates=289,232,129,231
+
+[DM.FDQAulasGetDescricao]
+Coordinates=748,430,149,87
+
+[DM.FDQAlunoXaula]
+Coordinates=179,646,111,177
+
+[Layout10]
+Coordinates=412,896,59,33
+
+[Layout11]
+Coordinates=343,896,59,33
+
+[EditAltura]
+Coordinates=31,646,63,51
+
+[LabelIdade]
+Coordinates=481,896,68,51
+
+[EditPeso]
+Coordinates=560,896,58,51
+
+[ComboBoxFaixa]
+Coordinates=1100,520,95,123
+Visible=True
+
+[EditDtNascimento]
+Coordinates=599,754,103,51
+
+[Layout12]
+Coordinates=274,896,59,33
+
+[Layout9]
+Coordinates=205,896,53,33
+
+[DM.FDQFaixa]
+Coordinates=1240,540,81,33
+Visible=False
+
+[BindSourceDB2]
+Coordinates=1240,540,92,105
 

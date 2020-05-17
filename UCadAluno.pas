@@ -4,14 +4,14 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes,
-  System.Variants, Data.db, Permissions,
+  System.Variants, Data.db, Permissions, DateUtils,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
   UModelo, FMX.Layouts, FMX.Objects, FMX.Controls.Presentation, FMX.TabControl,
   FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView.Adapters.Base,
   FMX.ListView, System.Rtti, System.Bindings.Outputs, FMX.Bind.Editors,
   Data.Bind.EngExt, FMX.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope,
   FMX.Edit, System.Actions, FMX.ActnList, FMX.StdActns,
-  FMX.MediaLibrary.Actions, FMX.ScrollBox, FMX.Memo;
+  FMX.MediaLibrary.Actions, FMX.ScrollBox, FMX.Memo, FMX.ListBox;
 
 type
   TFCadAluno = class(TFModelo)
@@ -43,6 +43,17 @@ type
     BindSourceDB1: TBindSourceDB;
     Layout8: TLayout;
     Memo1: TMemo;
+    Layout9: TLayout;
+    EditPeso: TEdit;
+    Layout10: TLayout;
+    Layout11: TLayout;
+    EditDtNascimento: TEdit;
+    Layout12: TLayout;
+    EditAltura: TEdit;
+    LabelIdade: TLabel;
+    ComboBoxFaixa: TComboBox;
+    BindSourceDB2: TBindSourceDB;
+    LinkFillControlToField: TLinkFillControlToField;
     procedure FormShow(Sender: TObject);
     procedure CircleAddAlunoClick(Sender: TObject);
     procedure Rectangle2Click(Sender: TObject);
@@ -53,8 +64,10 @@ type
     procedure ActionPhotoLibraryDidFinishTaking(Image: TBitmap);
     procedure FormActivate(Sender: TObject);
     procedure TabItem1Click(Sender: TObject);
+    procedure EditDtNascimentoExit(Sender: TObject);
   private
     { Private declarations }
+    procedure CalcNascimento;
 {$IFDEF ANDROID}
     PermissaoCamera, PermissaoReadStorage, PermissaoWriteStorage: string;
     procedure LibraryPermissionRequestResult(Sender: TObject;
@@ -62,7 +75,6 @@ type
       const AGrantResults: TArray<TPermissionStatus>);
     procedure DisplayMessageLibrary(Sender: TObject;
       const APermissions: TArray<string>; const APostProc: TProc);
-
 {$ENDIF}
   public
     { Public declarations }
@@ -131,6 +143,10 @@ begin
   dm.FDQAlunosALLAluno_img.LoadFromStream(StreamImg);
   dm.FDQAlunosALLaluno_observacao.AsString := Memo1.Text;
   // dm.FDQClientecliente_img.Assign(CircleFotoCliente.Fill.Bitmap.Bitmap);
+  dm.FDQAlunosALLpeso.AsString := EditPeso.Text;
+  dm.FDQAlunosALLaltrua.AsString := EditAltura.Text;
+  dm.FDQAlunosALLdt_nascimento.AsString := EditDtNascimento.Text;
+  dm.FDQAlunosALLfaixa.AsString := ComboBoxFaixa.Items[ComboBoxFaixa.ItemIndex];
   dm.FDQAlunosALL.Post;
   dm.FDConnection1.CommitRetaining;
   ShowMessage('Salvo com sucesso!');
@@ -153,6 +169,21 @@ begin
   dm.FDQAlunosALL.Append;
 end;
 
+procedure TFCadAluno.EditDtNascimentoExit(Sender: TObject);
+begin
+  inherited;
+  CalcNascimento;
+end;
+
+procedure TFCadAluno.CalcNascimento;
+begin
+  if EditDtNascimento.Text <> EmptyStr then
+  begin
+    LabelIdade.Text := IntToStr(DateUtils.YearsBetween(date,
+      StrToDate(EditDtNascimento.Text)));
+  end;
+end;
+
 procedure TFCadAluno.FormActivate(Sender: TObject);
 begin
   inherited;
@@ -171,6 +202,9 @@ begin
   dm.FDQAlunosALL.Active := True;
   dm.FDQAlunosALL.Close;
   dm.FDQAlunosALL.Open();
+  dm.FDQFaixa.Active := True;
+  dm.FDQFaixa.Close;
+  dm.FDQFaixa.Open();
   TabControl1.TabIndex := 0;
 end;
 
@@ -203,6 +237,8 @@ begin
   EditCelular.Text := dm.FDQAlunosALLAluno_celular.AsString;
   EditEmail.Text := dm.FDQAlunosALLAluno_email.AsString;
   Memo1.Text := dm.FDQAlunosALLaluno_observacao.AsString;
+  CalcNascimento;
+  ComboBoxFaixa.ItemIndex := ComboBoxFaixa.Items.IndexOf(dm.FDQAlunosALLfaixa.AsString);
 end;
 
 procedure TFCadAluno.Rectangle2Click(Sender: TObject);

@@ -34,12 +34,6 @@ Coordinates=332,10,107,105
 [FDQAlunoXAulaAllalunoXaula_id]
 Coordinates=617,105,177,33
 
-[FDQAlunosALLaluno_id]
-Coordinates=402,209,133,33
-
-[FDQAlunosALLaluno_img]
-Coordinates=402,261,142,33
-
 [FDQAlunoXaulaaluno_observacao]
 Coordinates=617,157,183,33
 
@@ -52,14 +46,8 @@ Coordinates=617,209,170,33
 [FDQAlunoXaulaaluno_nome]
 Coordinates=402,365,153,33
 
-[FDQAlunosALLaluno_nome]
-Coordinates=243,393,151,33
-
 [FDQAlunoXAulaAllalunoXaula_aluno_id]
 Coordinates=617,261,210,33
-
-[FDQAlunosALLaluno_celular]
-Coordinates=84,393,157,33
 
 [FDQAulasAllaula_descricao]
 Coordinates=617,313,151,33
@@ -70,14 +58,8 @@ Coordinates=617,365,144,33
 [FDQParametroparametro_login]
 Coordinates=865,1,167,33
 
-[FDQAlunosALLaluno_email]
-Coordinates=617,417,150,33
-
 [FDQParametroparametro_totalpontos]
 Coordinates=865,53,199,33
-
-[FDQAlunosALLaluno_observacao]
-Coordinates=865,105,181,33
 
 [FDQParametroparametro_senha]
 Coordinates=865,157,172,33
@@ -87,9 +69,6 @@ Coordinates=213,10,109,159
 
 [FDQAlunoXaula]
 Coordinates=10,10,92,177
-
-[FDQAlunosALLaluno_cpf]
-Coordinates=598,464,139,33
 
 [FDQAlunoMatriculaaluno_id]
 Coordinates=222,188,152,33
@@ -333,4 +312,7 @@ Coordinates=1382,261,152,33
 
 [FDQFaltaaluno_nome]
 Coordinates=1382,209,120,33
+
+[]
+Coordinates=402,209,133,33
 

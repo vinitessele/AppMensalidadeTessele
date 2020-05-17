@@ -7,32 +7,60 @@ uses
   System.Variants, Permissions,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
   UModelo, FMX.Layouts, FMX.Objects, FMX.Controls.Presentation, FMX.Edit,
-  System.Actions, FMX.ActnList, FMX.StdActns, FMX.MediaLibrary.Actions;
+  System.Actions, FMX.ActnList, FMX.StdActns, FMX.MediaLibrary.Actions,
+  FMX.TabControl, FMX.ListView.Types, FMX.ListView.Appearances,
+  FMX.ListView.Adapters.Base, FMX.ListView, System.Rtti,
+  System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.EngExt,
+  FMX.Bind.DBEngExt, Data.Bind.Components, Data.Bind.DBScope;
 
 type
   TFConfiguracao = class(TFModelo)
     Layout4: TLayout;
+    ActionList1: TActionList;
+    ActionPhotoLibrary: TTakePhotoFromLibraryAction;
+    StyleBook1: TStyleBook;
+    TabControl1: TTabControl;
+    TabItem1: TTabItem;
+    TabItem2: TTabItem;
+    VertScrollBox2: TVertScrollBox;
+    Layout2: TLayout;
+    Layout10: TLayout;
+    RectangleFotoConfiguracao: TRectangle;
+    RectangleConfiguracaoLibrary: TRectangle;
+    CircleFotoLogo: TCircle;
+    Layout11: TLayout;
+    RoundRect4: TRoundRect;
+    btnConfiguracao: TButton;
     Layout5: TLayout;
     EditNome: TEdit;
     Layout8: TLayout;
     EditMensagem: TEdit;
     Layout9: TLayout;
     EditTotalPontos: TEdit;
-    Layout10: TLayout;
-    RectangleFotoConfiguracao: TRectangle;
-    RectangleConfiguracaoLibrary: TRectangle;
-    Layout11: TLayout;
-    RoundRect4: TRoundRect;
-    btnConfiguracao: TButton;
-    CircleFotoLogo: TCircle;
-    ActionList1: TActionList;
-    ActionPhotoLibrary: TTakePhotoFromLibraryAction;
-    StyleBook1: TStyleBook;
+    Layout3: TLayout;
+    TabControl2: TTabControl;
+    TabItem3: TTabItem;
+    TabItem4: TTabItem;
+    ListViewFaixa: TListView;
+    BindSourceDB1: TBindSourceDB;
+    BindingsList1: TBindingsList;
+    LinkListControlToField1: TLinkListControlToField;
+    CircleAddFaixa: TCircle;
+    Layout6: TLayout;
+    Layout7: TLayout;
+    EditFaixa: TEdit;
+    Layout12: TLayout;
+    RoundRect1: TRoundRect;
+    btnConfirmarFaixa: TButton;
     procedure btnConfiguracaoClick(Sender: TObject);
     procedure RectangleConfiguracaoLibraryClick(Sender: TObject);
     procedure ActionPhotoLibraryDidFinishTaking(Image: TBitmap);
     procedure FormShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure CircleAddFaixaClick(Sender: TObject);
+    procedure btnConfirmarFaixaClick(Sender: TObject);
+    procedure ListViewFaixaItemClick(const Sender: TObject;
+      const AItem: TListViewItem);
   private
     { Private declarations }
 {$IFDEF ANDROID}
@@ -125,6 +153,25 @@ begin
   // Application.Terminate;
 end;
 
+procedure TFConfiguracao.btnConfirmarFaixaClick(Sender: TObject);
+begin
+  inherited;
+  TabItem4.Enabled := False;
+  TabControl2.TabIndex := 0;
+  dm.FDQFaixafaixa_descricao.AsString := EditFaixa.Text;
+  dm.FDQFaixa.Post;
+  dm.FDConnection1.CommitRetaining;
+  EditFaixa.Text := EmptyStr;
+end;
+
+procedure TFConfiguracao.CircleAddFaixaClick(Sender: TObject);
+begin
+  inherited;
+  TabItem4.Enabled := True;
+  TabControl2.TabIndex := 1;
+  dm.FDQFaixa.Append;
+end;
+
 procedure TFConfiguracao.FormActivate(Sender: TObject);
 begin
   inherited;
@@ -140,15 +187,30 @@ end;
 procedure TFConfiguracao.FormShow(Sender: TObject);
 begin
   inherited;
+  dm.FDQFaixa.Active := True;
+  dm.FDQFaixa.Close;
+  dm.FDQFaixa.Open();
+  TabControl1.TabIndex := 0;
+  TabControl2.TabIndex := 0;
   dm.FDQParametro.Active := True;
   dm.FDQParametro.Close;
   dm.FDQParametro.Open();
   if dm.FDQParametro.RecordCount > 0 then
   begin
-     EditNome.Text:= dm.FDQParametroparametro_nome.AsString;
-     EditMensagem.Text:= dm.FDQParametroparametro_premio.AsString;
-     EditTotalPontos.Text := dm.FDQParametroparametro_totalpontos.AsString;
+    EditNome.Text := dm.FDQParametroparametro_nome.AsString;
+    EditMensagem.Text := dm.FDQParametroparametro_premio.AsString;
+    EditTotalPontos.Text := dm.FDQParametroparametro_totalpontos.AsString;
   end;
+end;
+
+procedure TFConfiguracao.ListViewFaixaItemClick(const Sender: TObject;
+const AItem: TListViewItem);
+begin
+  inherited;
+  TabItem4.Enabled := True;
+  TabControl2.TabIndex := 1;
+  EditFaixa.Text := dm.FDQFaixafaixa_descricao.Text;
+  dm.FDQFaixa.Edit;
 end;
 
 procedure TFConfiguracao.RectangleConfiguracaoLibraryClick(Sender: TObject);

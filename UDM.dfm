@@ -17,6 +17,7 @@ object DM: TDM
     Top = 16
   end
   object FDQAlunosALL: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from aluno')
@@ -26,7 +27,6 @@ object DM: TDM
       FieldName = 'aluno_id'
       Origin = 'aluno_id'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object FDQAlunosALLaluno_cpf: TStringField
       FieldName = 'aluno_cpf'
@@ -56,6 +56,24 @@ object DM: TDM
     object FDQAlunosALLaluno_img: TBlobField
       FieldName = 'aluno_img'
       Origin = 'aluno_img'
+    end
+    object FDQAlunosALLdt_nascimento: TStringField
+      FieldName = 'dt_nascimento'
+      Origin = 'dt_nascimento'
+      Size = 10
+    end
+    object FDQAlunosALLpeso: TLargeintField
+      FieldName = 'peso'
+      Origin = 'peso'
+    end
+    object FDQAlunosALLaltrua: TLargeintField
+      FieldName = 'altrua'
+      Origin = 'altrua'
+    end
+    object FDQAlunosALLfaixa: TStringField
+      FieldName = 'faixa'
+      Origin = 'faixa'
+      Size = 15
     end
   end
   object FDQParametro: TFDQuery
@@ -95,6 +113,7 @@ object DM: TDM
     end
   end
   object FDQAulasAll: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from aula')
@@ -112,6 +131,7 @@ object DM: TDM
     end
   end
   object FDQAlunoXaula: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from aluno as a'
@@ -164,6 +184,7 @@ object DM: TDM
     end
   end
   object FDQAlunoXAulaAll: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from AlunoXAula')
@@ -185,6 +206,7 @@ object DM: TDM
     end
   end
   object FDQAlunoMatricula: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from aluno a'
@@ -289,6 +311,7 @@ object DM: TDM
     end
   end
   object FDQValidaChamda: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from chamada '
@@ -342,6 +365,7 @@ object DM: TDM
     end
   end
   object FDQMensalidade: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from mensalidade')
@@ -383,6 +407,7 @@ object DM: TDM
     end
   end
   object FDQValidaMensalidade: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from mensalidade '
@@ -446,6 +471,7 @@ object DM: TDM
     end
   end
   object FDQCustos: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from custofixo')
@@ -479,6 +505,7 @@ object DM: TDM
     end
   end
   object FDQAulaDada: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from aulasdadas')
@@ -500,6 +527,7 @@ object DM: TDM
     end
   end
   object FDQValidaAulasDadas: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from Aulasdadas'
@@ -535,6 +563,7 @@ object DM: TDM
     end
   end
   object FDQAulasGetDescricao: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select * from aula'
@@ -560,6 +589,7 @@ object DM: TDM
     end
   end
   object FDQCountAulas: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'select count(*) as qteAulas from aulasdadas'
@@ -595,6 +625,7 @@ object DM: TDM
     end
   end
   object FDQFalta: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       
@@ -730,6 +761,7 @@ object DM: TDM
     end
   end
   object FDQListMensPorAluno: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       'Select printf("%.2f",m.mensalidade_valor) as valor, '
@@ -777,6 +809,7 @@ object DM: TDM
     end
   end
   object FDQAjuste: TFDQuery
+    Active = True
     Connection = FDConnection1
     SQL.Strings = (
       
@@ -814,6 +847,23 @@ object DM: TDM
       Origin = 'chamada_id'
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
+    end
+  end
+  object FDQFaixa: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from faixa')
+    Left = 128
+    Top = 160
+    object FDQFaixafaixa_id: TFDAutoIncField
+      FieldName = 'faixa_id'
+      Origin = 'faixa_id'
+      ProviderFlags = [pfInWhere, pfInKey]
+    end
+    object FDQFaixafaixa_descricao: TStringField
+      FieldName = 'faixa_descricao'
+      Origin = 'faixa_descricao'
+      Size = 15
     end
   end
 end
