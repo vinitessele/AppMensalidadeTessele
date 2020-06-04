@@ -67,7 +67,7 @@ type
     procedure EditDtNascimentoExit(Sender: TObject);
   private
     { Private declarations }
-    procedure CalcNascimento;
+
 {$IFDEF ANDROID}
     PermissaoCamera, PermissaoReadStorage, PermissaoWriteStorage: string;
     procedure LibraryPermissionRequestResult(Sender: TObject;
@@ -79,6 +79,7 @@ type
   public
     { Public declarations }
     StreamImg: TStream;
+    procedure CalcNascimento;
   end;
 
 var
@@ -238,7 +239,8 @@ begin
   EditEmail.Text := dm.FDQAlunosALLAluno_email.AsString;
   Memo1.Text := dm.FDQAlunosALLaluno_observacao.AsString;
   CalcNascimento;
-  ComboBoxFaixa.ItemIndex := ComboBoxFaixa.Items.IndexOf(dm.FDQAlunosALLfaixa.AsString);
+  ComboBoxFaixa.ItemIndex := ComboBoxFaixa.Items.IndexOf
+    (dm.FDQAlunosALLfaixa.AsString);
 end;
 
 procedure TFCadAluno.Rectangle2Click(Sender: TObject);

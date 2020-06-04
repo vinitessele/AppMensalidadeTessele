@@ -76,6 +76,12 @@ object DM: TDM
       Origin = 'faixa'
       Size = 15
     end
+    object FDQAlunosALLstatus: TStringField
+      FieldName = 'status'
+      Origin = 'status'
+      FixedChar = True
+      Size = 1
+    end
   end
   object FDQParametro: TFDQuery
     Active = True

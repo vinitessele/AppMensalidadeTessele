@@ -302,7 +302,7 @@ Coordinates=1382,781,203,33
 Coordinates=1363,825,187,33
 
 []
-Coordinates=643,636,82,33
+Coordinates=641,856,114,33
 
 [FDQPresencadata]
 Coordinates=290,379,103,33
@@ -341,9 +341,6 @@ Coordinates=347,785,139,33
 [FDQFaltachamada_aluno_id]
 Coordinates=188,785,152,33
 
-[FDQAlunosALLpeso]
-Coordinates=69,785,115,33
-
 [FDQFaixafaixa_id]
 Coordinates=1254,856,100,33
 
@@ -352,9 +349,6 @@ Coordinates=1656,53,181,33
 
 [FDQAlunosALLaluno_img]
 Coordinates=1656,105,142,33
-
-[FDQAlunosALLfaixa]
-Coordinates=641,856,114,33
 
 [FDQAlunosALLaluno_nome]
 Coordinates=1656,157,151,33
@@ -367,10 +361,4 @@ Coordinates=522,856,117,33
 
 [FDQPresenca]
 Coordinates=357,269,81,123
-
-[FDQAlunosALLaltrua]
-Coordinates=393,856,119,33
-
-[FDQAlunosALLdt_nascimento]
-Coordinates=1656,209,163,33
 

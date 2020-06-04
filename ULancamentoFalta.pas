@@ -48,11 +48,6 @@ type
     LinkListControlToField4: TLinkListControlToField;
     TabItem4: TTabItem;
     Layout3: TLayout;
-    Layout4: TLayout;
-    ComboBox1: TComboBox;
-    SpeedButton1: TSpeedButton;
-    Layout5: TLayout;
-    DateEdit2: TDateEdit;
     Label3: TLabel;
     ListViewPresenca: TListView;
     LinkListControlToField5: TLinkListControlToField;
@@ -116,7 +111,8 @@ begin
     dm.FDQAulasAllaula_id.AsString;
   dm.FDQAlunoMatricula.Open();
   TabItem3.Enabled := True;
-  TabControl1.TabIndex := 2;
+  TabItem4.Enabled := True;
+  TabControl1.TabIndex := 1;
 end;
 
 procedure TFLanctFalta.Calendar1DayClick(Sender: TObject);
@@ -135,38 +131,37 @@ begin
       case BotaoPressionado of
         mrYes:
           begin
-            dm.FDQValidaAulasDadas.Active := True;
-            dm.FDQValidaAulasDadas.Close;
-            dm.FDQValidaAulasDadas.ParamByName('data').AsDate := Calendar1.Date;
-            dm.FDQValidaAulasDadas.ParamByName('aula').AsInteger :=
-              dm.FDQAulasGetDescricaoaula_id.AsInteger;
-            dm.FDQValidaAulasDadas.Open();
+            // dm.FDQValidaAulasDadas.Active := True;
+            // dm.FDQValidaAulasDadas.Close;
+            // dm.FDQValidaAulasDadas.ParamByName('data').AsDate := Calendar1.Date;
+            // dm.FDQValidaAulasDadas.ParamByName('aula').AsInteger :=
+            // dm.FDQAulasGetDescricaoaula_id.AsInteger;
+            // dm.FDQValidaAulasDadas.Open();
 
-            if dm.FDQValidaAulasDadas.RecordCount < 1 then
+            // if dm.FDQValidaAulasDadas.RecordCount < 1 then
+            // begin
+            dm.fdqauladada.Active := True;
+
+            dm.fdqauladada.Append;
+            dm.FDQAulaDadaaulasdadas_date.AsDateTime := Calendar1.Date;
+            if dm.FDQAlunoMatriculaalunoXaula_aula_id.AsInteger = 0 then
             begin
-              dm.fdqauladada.Active := True;
-
-              dm.fdqauladada.Append;
-              dm.FDQAulaDadaaulasdadas_date.AsDateTime := Calendar1.Date;
-              if dm.FDQAlunoMatriculaalunoXaula_aula_id.AsInteger = 0 then
-              begin
-
-                dm.FDQAulaDadaaulasdadas_aula_id.AsInteger :=
-                  dm.FDQAulasGetDescricaoaula_id.AsInteger;
-              end
-              else
-              begin
-                dm.FDQAulaDadaaulasdadas_aula_id.AsInteger :=
-                  dm.FDQAlunoMatriculaalunoXaula_aula_id.AsInteger;
-              end;
-              dm.fdqauladada.Post;
-              dm.FDConnection1.CommitRetaining;
-              ShowMessage('Agora já pode inserir os alunos presentes!');
+              dm.FDQAulaDadaaulasdadas_aula_id.AsInteger :=
+                dm.FDQAulasGetDescricaoaula_id.AsInteger;
             end
             else
             begin
-              ShowMessage('Aula já lançada!');
+              dm.FDQAulaDadaaulasdadas_aula_id.AsInteger :=
+                dm.FDQAlunoMatriculaalunoXaula_aula_id.AsInteger;
             end;
+            dm.fdqauladada.Post;
+            dm.FDConnection1.CommitRetaining;
+            ShowMessage('Agora já pode inserir os alunos presentes!');
+            // end
+            // else
+            // begin
+            // ShowMessage('Aula já lançada!');
+            // end;
           end;
 
         mrNo:
@@ -188,7 +183,6 @@ begin
   Calendar1.Date := Date;
   TabControl1.TabIndex := 0;
   DateEdit1.Date := Date;
-  DateEdit2.Date := Date;
 end;
 
 procedure TFLanctFalta.ListViewAjusteDeleteItem(Sender: TObject;
@@ -238,12 +232,12 @@ begin
   dm.fdqpresenca.Active := True;
   dm.fdqpresenca.Append;
   dm.FDQPresencaaluno_id.AsInteger := dm.FDQAlunoMatriculaaluno_id.AsInteger;
-  dm.FDQPresencadata.AsDateTime := DateEdit2.DateTime;
+  dm.FDQPresencadata.AsDateTime := Calendar1.Date;
   dm.FDQPresencaaula_id.AsInteger :=
     dm.FDQAlunoMatriculaalunoXaula_aula_id.AsInteger;
   dm.fdqpresenca.Post;
   dm.FDConnection1.CommitRetaining;
-    ShowMessage('1 Presença lançada');
+  ShowMessage('1 Presença lançada');
 end;
 
 end.
