@@ -7,23 +7,14 @@ Coordinates=402,1,177,33
 [FDQParametroparametro_logo]
 Coordinates=617,1,164,33
 
-[FDQAlunoXaulaaluno_celular]
-Coordinates=402,53,159,33
-
 [FDQAulasAll]
 Coordinates=337,420,77,87
-
-[FDQAlunoXaulaaluno_cpf]
-Coordinates=402,105,141,33
 
 [FDConnection1]
 Coordinates=257,283,90,33
 
-[FDQAlunoXaulaaluno_email]
-Coordinates=402,157,152,33
-
 [FDQAlunosALL]
-Coordinates=10,10,91,249
+Coordinates=10,10,91,267
 
 [FDQAlunoXAulaAllalunoXaula_aula_id]
 Coordinates=617,53,203,33
@@ -34,26 +25,14 @@ Coordinates=448,269,107,105
 [FDQAlunoXAulaAllalunoXaula_id]
 Coordinates=617,105,177,33
 
-[FDQAlunoXaulaaluno_observacao]
-Coordinates=617,157,183,33
-
-[FDQAlunoXaulaaluno_id]
-Coordinates=402,313,135,33
-
 [FDQParametroparametro_nome]
 Coordinates=617,209,170,33
-
-[FDQAlunoXaulaaluno_nome]
-Coordinates=402,365,153,33
 
 [FDQAlunoXAulaAllalunoXaula_aluno_id]
 Coordinates=617,261,210,33
 
 [FDQAulasAllaula_descricao]
 Coordinates=617,313,151,33
-
-[FDQAlunoXaulaaluno_img]
-Coordinates=617,365,144,33
 
 [FDQParametroparametro_login]
 Coordinates=865,1,167,33
@@ -66,9 +45,6 @@ Coordinates=865,157,172,33
 
 [FDQParametro]
 Coordinates=609,10,109,159
-
-[FDQAlunoXaula]
-Coordinates=507,10,92,177
 
 [FDQAlunoMatriculaaluno_id]
 Coordinates=222,188,152,33
@@ -361,4 +337,43 @@ Coordinates=522,856,117,33
 
 [FDQPresenca]
 Coordinates=357,269,81,123
+
+[FDQAlunosALLpeso]
+Coordinates=412,206,115,33
+
+[FDQAlunosALLaltrua]
+Coordinates=728,417,119,33
+
+[FDQAlunosALLfaixa]
+Coordinates=642,469,114,33
+
+[FDQAlunosALLdt_nascimento]
+Coordinates=0,530,163,33
+
+[FDQAlunosALLstatus]
+Coordinates=381,563,121,33
+
+[FDQMatricula]
+Coordinates=507,10,92,177
+
+[FDQMatriculaaluno_id]
+Coordinates=402,313,135,33
+
+[FDQMatriculaaluno_cpf]
+Coordinates=402,105,141,33
+
+[FDQMatriculaaluno_nome]
+Coordinates=402,365,153,33
+
+[FDQMatriculaaluno_celular]
+Coordinates=402,53,159,33
+
+[FDQMatriculaaluno_email]
+Coordinates=402,157,152,33
+
+[FDQMatriculaaluno_observacao]
+Coordinates=617,157,183,33
+
+[FDQMatriculaaluno_img]
+Coordinates=617,365,144,33
 

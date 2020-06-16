@@ -24,14 +24,14 @@ type
     FDQAulasAll: TFDQuery;
     FDQAulasAllaula_id: TFDAutoIncField;
     FDQAulasAllaula_descricao: TStringField;
-    FDQAlunoXaula: TFDQuery;
-    FDQAlunoXaulaaluno_id: TFDAutoIncField;
-    FDQAlunoXaulaaluno_cpf: TStringField;
-    FDQAlunoXaulaaluno_nome: TStringField;
-    FDQAlunoXaulaaluno_celular: TStringField;
-    FDQAlunoXaulaaluno_email: TStringField;
-    FDQAlunoXaulaaluno_observacao: TStringField;
-    FDQAlunoXaulaaluno_img: TBlobField;
+    FDQMatricula: TFDQuery;
+    FDQMatriculaaluno_id: TFDAutoIncField;
+    FDQMatriculaaluno_cpf: TStringField;
+    FDQMatriculaaluno_nome: TStringField;
+    FDQMatriculaaluno_celular: TStringField;
+    FDQMatriculaaluno_email: TStringField;
+    FDQMatriculaaluno_observacao: TStringField;
+    FDQMatriculaaluno_img: TBlobField;
     FDQAlunoXAulaAll: TFDQuery;
     FDQAlunoXAulaAllalunoXaula_id: TFDAutoIncField;
     FDQAlunoXAulaAllalunoXaula_aluno_id: TIntegerField;
@@ -158,132 +158,131 @@ var
   strSQL: string;
 begin
 
-(*
-    strSQL := //
-      ' CREATE TABLE IF NOT EXISTS parametro( ' + //
-      ' parametro_nome varchar(60),   ' + //
-      ' parametro_logo blob,          ' + //
-      ' parametro_login varchar(100), ' + //
-      ' parametro_totalpontos integer,' + //
-      ' parametro_premio varchar(100),' + //
-      ' parametro_senha varchar(10))  ';
-    FDConnection1.ExecSQL(strSQL);
+  strSQL := //
+    ' CREATE TABLE IF NOT EXISTS parametro( ' + //
+    ' parametro_nome varchar(60),   ' + //
+    ' parametro_logo blob,          ' + //
+    ' parametro_login varchar(100), ' + //
+    ' parametro_totalpontos integer,' + //
+    ' parametro_premio varchar(100),' + //
+    ' parametro_senha varchar(10))  ';
+  FDConnection1.ExecSQL(strSQL);
 
-    strSQL := EmptyStr;
-    strSQL := //
-      ' create table IF NOT EXISTS aulasdadas(  ' + //
-      ' aulasdadas_id integer not null primary key autoincrement,' + //
-      ' aulasdadas_date date,' + //
-      ' aulasdadas_aula_id integer) ';
-    FDConnection1.ExecSQL(strSQL);
+  strSQL := EmptyStr;
+  strSQL := //
+    ' create table IF NOT EXISTS aulasdadas(  ' + //
+    ' aulasdadas_id integer not null primary key autoincrement,' + //
+    ' aulasdadas_date date,' + //
+    ' aulasdadas_aula_id integer) ';
+  FDConnection1.ExecSQL(strSQL);
 
-    strSQL := EmptyStr;
-    strSQL := //
-      ' create table IF NOT EXISTS custofixo(    ' + //
-      ' custofixo_id integer not null primary key autoincrement,   ' + //
-      ' custofixo_descricao varchar(50),    ' + //
-      ' custofixo_valor numeric(4,8),   ' + //
-      ' custofixo_rateio varchar(10),   ' + //
-      ' custofixo_tipo varchar(10))  ';
-    FDConnection1.ExecSQL(strSQL);
+  strSQL := EmptyStr;
+  strSQL := //
+    ' create table IF NOT EXISTS custofixo(    ' + //
+    ' custofixo_id integer not null primary key autoincrement,   ' + //
+    ' custofixo_descricao varchar(50),    ' + //
+    ' custofixo_valor numeric(4,8),   ' + //
+    ' custofixo_rateio varchar(10),   ' + //
+    ' custofixo_tipo varchar(10))  ';
+  FDConnection1.ExecSQL(strSQL);
 
-    strSQL := EmptyStr;
-    strSQL := //
-      ' create table IF NOT EXISTS aluno(   ' + //
-      ' aluno_id integer not null primary key autoincrement, ' + //
-      ' aluno_cpf varchar(11),       ' + //
-      ' aluno_nome varchar(60),   ' + //
-      ' aluno_celular varchar(12),   ' + //
-      ' aluno_email varchar(100),    ' + //
-      ' aluno_observacao varchar(200),  ' + //
-      ' dt_nascimento varchar(10),  ' + //
-      ' peso decimal ,  ' + //
-      ' altrua decimal, ' + //
-      ' faixa varchar(15),' + //
-      ' status char(1), ' + //
-      ' aluno_img blob) ';
-    FDConnection1.ExecSQL(strSQL);
-    // 'alter table aluno add dt_nascimento varchar(10);
-    // 'alter table aluno add peso decimal;
-    // 'alter table aluno add altrua decimal;
-    // 'alter table aluno add faixa varchar(15);
+  strSQL := EmptyStr;
+  strSQL := //
+    ' create table IF NOT EXISTS aluno(   ' + //
+    ' aluno_id integer not null primary key autoincrement, ' + //
+    ' aluno_cpf varchar(11),       ' + //
+    ' aluno_nome varchar(60),   ' + //
+    ' aluno_celular varchar(12),   ' + //
+    ' aluno_email varchar(100),    ' + //
+    ' aluno_observacao varchar(200),  ' + //
+    ' dt_nascimento varchar(10),  ' + //
+    ' peso decimal ,  ' + //
+    ' altrua decimal, ' + //
+    ' faixa varchar(15),' + //
+    ' status char(1), ' + //
+    ' aluno_img blob) ';
+  FDConnection1.ExecSQL(strSQL);
+  // 'alter table aluno add dt_nascimento varchar(10);
+  // 'alter table aluno add peso decimal;
+  // 'alter table aluno add altrua decimal;
+  // 'alter table aluno add faixa varchar(15);
 
-    strSQL := EmptyStr;
-    strSQL := //
-      ' create table IF NOT EXISTS faixa(' + //
-      ' faixa_id integer not null primary key autoincrement,' + //
-      ' faixa_descricao varchar(15))';
-    FDConnection1.ExecSQL(strSQL);
+  strSQL := EmptyStr;
+  strSQL := //
+    ' create table IF NOT EXISTS faixa(' + //
+    ' faixa_id integer not null primary key autoincrement,' + //
+    ' faixa_descricao varchar(15))';
+  FDConnection1.ExecSQL(strSQL);
 
-    strSQL := EmptyStr;
-    strSQL := //
-      ' create table IF NOT EXISTS aula( ' + //
-      ' aula_id integer not null primary key autoincrement,' + //
-      ' aula_descricao varchar(20))';
-    FDConnection1.ExecSQL(strSQL);
+  strSQL := EmptyStr;
+  strSQL := //
+    ' create table IF NOT EXISTS aula( ' + //
+    ' aula_id integer not null primary key autoincrement,' + //
+    ' aula_descricao varchar(20))';
+  FDConnection1.ExecSQL(strSQL);
 
-    strSQL := EmptyStr;
-    strSQL := //
-      ' create table IF NOT EXISTS chamada(  ' + //
-      ' chamada_id integer not null primary key autoincrement, ' + //
-      ' chamada_aluno_id integer not null, ' + //
-      ' chamada_aula_id integer not null, ' + //
-      ' chamada_data date,      ' + //
-      ' chamada_hora time) ';
-    FDConnection1.ExecSQL(strSQL);
+  strSQL := EmptyStr;
+  strSQL := //
+    ' create table IF NOT EXISTS chamada(  ' + //
+    ' chamada_id integer not null primary key autoincrement, ' + //
+    ' chamada_aluno_id integer not null, ' + //
+    ' chamada_aula_id integer not null, ' + //
+    ' chamada_data date,      ' + //
+    ' chamada_hora time) ';
+  FDConnection1.ExecSQL(strSQL);
 
-    strSQL := EmptyStr;
-    strSQL := //
-      ' create table IF NOT EXISTS mensalidade(   ' + //
-      ' mensalidade_id integer not null primary key autoincrement,' + //
-      ' mensalidade_aluno_id integer not null,   ' + //
-      ' mensalidade_aula_id integer not null,  ' + //
-      ' mensalidade_data date,          ' + //
-      ' mensalidade_hora time,     ' + //
-      ' mensalidade_competencia,     ' + //
-      ' mensalidade_valor) ';
-    FDConnection1.ExecSQL(strSQL);
+  strSQL := EmptyStr;
+  strSQL := //
+    ' create table IF NOT EXISTS mensalidade(   ' + //
+    ' mensalidade_id integer not null primary key autoincrement,' + //
+    ' mensalidade_aluno_id integer not null,   ' + //
+    ' mensalidade_aula_id integer not null,  ' + //
+    ' mensalidade_data date,          ' + //
+    ' mensalidade_hora time,     ' + //
+    ' mensalidade_competencia,     ' + //
+    ' mensalidade_valor) ';
+  FDConnection1.ExecSQL(strSQL);
 
-    strSQL := EmptyStr;
-    strSQL := //
-      ' create table IF NOT EXISTS custofixo(  ' + //
-      ' custofixo_id integer not null primary key autoincrement, ' + //
-      ' custofixo_descricao varchar(50),  ' + //
-      ' custofixo_valor numeric(4,8),  ' + //
-      ' custofixo_rateio varchar(10),  ' + //
-      ' custofixo_tipo varchar(10)) ';
-    FDConnection1.ExecSQL(strSQL);
+  strSQL := EmptyStr;
+  strSQL := //
+    ' create table IF NOT EXISTS custofixo(  ' + //
+    ' custofixo_id integer not null primary key autoincrement, ' + //
+    ' custofixo_descricao varchar(50),  ' + //
+    ' custofixo_valor numeric(4,8),  ' + //
+    ' custofixo_rateio varchar(10),  ' + //
+    ' custofixo_tipo varchar(10)) ';
+  FDConnection1.ExecSQL(strSQL);
 
-    strSQL := EmptyStr;
-    strSQL := //
-      ' create table IF NOT EXISTS parametro( ' + //
-      ' parametro_nome varchar(60),' + //
-      ' parametro_logo blob,       ' + //
-      ' parametro_login varchar(100),' + //
-      ' parametro_totalpontos integer, ' + //
-      ' parametro_premio varchar(100), ' + //
-      ' parametro_senha varchar(10)) ';
-    FDConnection1.ExecSQL(strSQL);
+  strSQL := EmptyStr;
+  strSQL := //
+    ' create table IF NOT EXISTS parametro( ' + //
+    ' parametro_nome varchar(60),' + //
+    ' parametro_logo blob,       ' + //
+    ' parametro_login varchar(100),' + //
+    ' parametro_totalpontos integer, ' + //
+    ' parametro_premio varchar(100), ' + //
+    ' parametro_senha varchar(10)) ';
+  FDConnection1.ExecSQL(strSQL);
 
-    strSQL := EmptyStr;
-    strSQL := //
-      ' create table IF NOT EXISTS alunoXaula ( ' + //
-      ' alunoXaula_id integer not null primary key autoincrement,' + //
-      ' alunoXaula_aluno_id integer, ' + //
-      ' alunoXaula_aula_id integer, ' + //
-      ' foreign key (alunoXaula_aluno_id) references aluno(aluno_id),' + //
-      ' foreign key (alunoXaula_aula_id) references aula(aula_id)) ';
-    FDConnection1.ExecSQL(strSQL);
+  strSQL := EmptyStr;
+  strSQL := //
+    ' create table IF NOT EXISTS alunoXaula ( ' + //
+    ' alunoXaula_id integer not null primary key autoincrement,' + //
+    ' alunoXaula_aluno_id integer, ' + //
+    ' alunoXaula_aula_id integer, ' + //
+    ' foreign key (alunoXaula_aluno_id) references aluno(aluno_id),' + //
+    ' foreign key (alunoXaula_aula_id) references aula(aula_id)) ';
+  FDConnection1.ExecSQL(strSQL);
 
-    strSQL := EmptyStr;
-    strSQL := //
-      ' create table IF NOT EXISTS presenca( ' + //
-      ' presenca_id integer not null primary key autoincrement,' + //
-      ' aluno_id integer,' + //
-      ' data date,' + //
-      ' aula_id integer) ';
-    FDConnection1.ExecSQL(strSQL);
-*)
+  strSQL := EmptyStr;
+  strSQL := //
+    ' create table IF NOT EXISTS presenca( ' + //
+    ' presenca_id integer not null primary key autoincrement,' + //
+    ' aluno_id integer,' + //
+    ' data date,' + //
+    ' aula_id integer) ';
+  FDConnection1.ExecSQL(strSQL);
+
 end;
 
 procedure TDM.FDConnection1BeforeConnect(Sender: TObject);

@@ -52,7 +52,6 @@ type
     RectRestaurar: TRectangle;
     Circle13: TCircle;
     btnRestaurar: TButton;
-    ProgressBar1: TProgressBar;
     LayoutLogo: TLayout;
     RectangleLogoEmpresa: TRectangle;
     RectMensalidade: TRectangle;
@@ -74,6 +73,9 @@ type
     RectRelatorio: TRectangle;
     Circle8: TCircle;
     btnRelatorio: TButton;
+    RectFaixa: TRectangle;
+    Circle9: TCircle;
+    btnFaixa: TButton;
     procedure BtnCadCliClick(Sender: TObject);
     procedure bntConfiguracaoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -108,7 +110,7 @@ implementation
 {$R *.fmx}
 
 uses uOpenViewUrl, UDM, USobre, UCadAluno, UConfiguracao, UCadAulas, UAlunoAula,
-  ULancamentoFalta, ULancMensalidade, UCustos, URelatorios;
+  ULancamentoFalta, ULancMensalidade, UCustos, URelatorios, UCadFaixa;
 
 procedure TFPrincipal.OnFinishUpdate(Sender: TObject);
 begin
@@ -221,7 +223,6 @@ var
   AppPath: string;
   I: integer;
 begin
-  ProgressBar1.Visible := true;
 {$IFDEF MSWINDOWS}
   strPath := System.IOUtils.TPath.Combine
     ('C:\Users\vinic\Documents\Embarcadero\Studio\Projects\AppControlMensPresenca\Bd\',
@@ -232,7 +233,6 @@ begin
   for I := 0 to 100 do
   begin
     Sleep(100);
-    ProgressBar1.Value := I;
   end;
 
   If not FileExists(strDestino) Then
@@ -251,12 +251,11 @@ begin
 {$IF DEFINED(iOS) or DEFINED(ANDROID)}
   strPath := System.IOUtils.TPath.Combine(System.IOUtils.TPath.GetDocumentsPath,
     'Bd.db3');
-  AppPath := IOUtils.TPath.GetHomePath;
+  AppPath := IOUtils.TPath.GetDownloadsPath;
   strDestino := IOUtils.TPath.Combine(AppPath, 'smyFile.db3');
   for I := 0 to 100 do
   begin
     Sleep(100);
-    ProgressBar1.Value := I;
   end;
   If not FileExists(strDestino) Then
   Begin
@@ -272,7 +271,6 @@ begin
   end;
 
 {$ENDIF}
-  ProgressBar1.Visible := False;
 end;
 
 procedure TFPrincipal.BtnCadCliClick(Sender: TObject);
@@ -331,75 +329,21 @@ begin
 end;
 
 procedure TFPrincipal.btnRestaurarClick(Sender: TObject);
-var
-  strPath: string;
-  strOrigem: string;
-  AppPath: string;
-  I: integer;
 begin
-  ProgressBar1.Visible := true;
-{$IFDEF MSWINDOWS}
-  AppPath := IOUtils.TPath.GetHomePath;
-  strOrigem := IOUtils.TPath.Combine(AppPath, 'smyFile.db3');
-  strPath := System.IOUtils.TPath.Combine
-    ('C:\Users\vinic\Documents\Embarcadero\Studio\Projects\AppControlMensPresenca\Bd\',
-    'Bd.db3');
-  If not FileExists(strPath) Then
-  Begin
-    TFile.Copy(strOrigem, strPath);
-  End
-  else
-  begin
-    Sleep(1000);
-    DM.FDConnection1.Connected := False;
-    TFile.Delete(strPath);
-    for I := 0 to 100 do
+  if not Assigned(FFaixa) then
+    FFaixa := TFFaixa.Create(nil);
+  FFaixa.ShowModal(
+    procedure(ModalResult: TModalResult)
     begin
-      Sleep(10);
-      ProgressBar1.Value := I;
-    end;
-    TFile.Copy(strOrigem, strPath);
-  end;
 
-{$ENDIF}
-{$IF DEFINED(iOS) or DEFINED(ANDROID)}
-  AppPath := IOUtils.TPath.GetHomePath;
-  strOrigem := IOUtils.TPath.Combine(AppPath, 'smyFile.db3');
-  strPath := System.IOUtils.TPath.Combine(System.IOUtils.TPath.GetDocumentsPath,
-    'Bd.db3');
-  If not FileExists(strPath) Then
-  Begin
-    TFile.Copy(strOrigem, strPath);
-    ProgressBar1.Visible := true;
-    for I := 0 to 100 do
-    begin
-      Sleep(10);
-      ProgressBar1.Value := I;
-    end;
-  End
-  else
-  begin
-    Sleep(1000);
-    DM.FDConnection1.Connected := False;
-    TFile.Delete(strPath);
-    ProgressBar1.Visible := true;
-    for I := 0 to 100 do
-    begin
-      Sleep(10);
-      ProgressBar1.Value := I;
-    end;
-    TFile.Copy(strOrigem, strPath);
-  end;
-{$ENDIF}
-  ProgressBar1.Visible := False;
-  Application.Terminate;
+    end);
 end;
 
 procedure TFPrincipal.FormCreate(Sender: TObject);
 var
   vFoto: TStream;
 begin
-  versao_app := '1,4';
+  versao_app := '1,6';
   versao_server := '0.0';
   LabelVersao.Text := 'Versão ' + versao_app;
   LayoutUpdate.Margins.Top := FPrincipal.Height + 50;

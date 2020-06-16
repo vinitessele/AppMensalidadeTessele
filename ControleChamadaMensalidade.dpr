@@ -15,7 +15,8 @@ uses
   ULancamentoFalta in 'ULancamentoFalta.pas' {FLanctFalta},
   ULancMensalidade in 'ULancMensalidade.pas' {FMensalidade},
   UCustos in 'UCustos.pas' {FCustos},
-  URelatorios in 'URelatorios.pas' {FRelatorios};
+  URelatorios in 'URelatorios.pas' {FRelatorios},
+  UCadFaixa in 'UCadFaixa.pas' {FFaixa};
 
 {$R *.res}
 
@@ -26,5 +27,6 @@ begin
   Application.CreateForm(TFMensalidade, FMensalidade);
   Application.CreateForm(TFCustos, FCustos);
   Application.CreateForm(TFRelatorios, FRelatorios);
+  Application.CreateForm(TFFaixa, FFaixa);
   Application.Run;
 end.

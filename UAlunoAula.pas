@@ -46,10 +46,10 @@ uses UDM, UPrincipal;
 procedure TFAlunoAula.btnpesquisaClick(Sender: TObject);
 begin
   inherited;
-  dm.FDQAlunoXaula.Close;
-  dm.FDQAlunoXaula.ParamByName('aula').AsString :=
+  dm.FDQMatricula.Close;
+  dm.FDQMatricula.ParamByName('aula').AsString :=
     dm.FDQAulasAllaula_id.AsString;
-  dm.FDQAlunoXaula.Open();
+  dm.FDQMatricula.Open();
 end;
 
 procedure TFAlunoAula.FormShow(Sender: TObject);
@@ -59,9 +59,9 @@ begin
   dm.FDQAulasAll.Active := True;
   dm.FDQAulasAll.Close;
   dm.FDQAulasAll.Open();
-  dm.FDQAlunoXaula.Active := True;
-  dm.FDQAlunoXaula.Close;
-  dm.FDQAlunoXaula.Open();
+  dm.FDQMatricula.Active := True;
+  dm.FDQMatricula.Close;
+  dm.FDQMatricula.Open();
   dm.FDQAlunoXAulaAll.Active := True;
 
 end;
@@ -72,12 +72,14 @@ begin
   inherited;
   dm.FDQAlunoXAulaAll.Append;
   dm.FDQAlunoXAulaAllalunoXaula_aluno_id.AsInteger :=
-    dm.FDQAlunosALLaluno_id.AsInteger;
+    dm.FDQMatriculaaluno_id.AsInteger;
   dm.FDQAlunoXAulaAllalunoXaula_aula_id.AsInteger :=
     dm.FDQAulasAllaula_id.AsInteger;
   dm.FDQAlunoXAulaAll.Post;
   dm.FDConnection1.CommitRetaining;
   ShowMessage('Salvo com sucesso!');
+  dm.FDQMatricula.Close;
+  dm.FDQMatricula.Open();
 end;
 
 end.

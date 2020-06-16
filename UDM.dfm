@@ -137,17 +137,15 @@ object DM: TDM
       Origin = 'aula_descricao'
     end
   end
-  object FDQAlunoXaula: TFDQuery
-    Active = True
+  object FDQMatricula: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
       'select * from aluno as a'
-      'where a.status <> '#39'I'#39
       
-        'and not exists (select * from alunoXaula as b where b.alunoXaula' +
-        '_aluno_id = a.aluno_id and b.alunoXaula_aula_id =:aula)')
-    Left = 296
-    Top = 16
+        'where not exists (select * from alunoXaula as b where b.alunoXau' +
+        'la_aluno_id = a.aluno_id and b.alunoXaula_aula_id =:aula)')
+    Left = 312
+    Top = 72
     ParamData = <
       item
         Name = 'AULA'
@@ -155,38 +153,38 @@ object DM: TDM
         ParamType = ptInput
         Value = '1'
       end>
-    object FDQAlunoXaulaaluno_id: TFDAutoIncField
+    object FDQMatriculaaluno_id: TFDAutoIncField
       FieldName = 'aluno_id'
       Origin = 'aluno_id'
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
     end
-    object FDQAlunoXaulaaluno_cpf: TStringField
+    object FDQMatriculaaluno_cpf: TStringField
       FieldName = 'aluno_cpf'
       Origin = 'aluno_cpf'
       Size = 11
     end
-    object FDQAlunoXaulaaluno_nome: TStringField
+    object FDQMatriculaaluno_nome: TStringField
       FieldName = 'aluno_nome'
       Origin = 'aluno_nome'
       Size = 60
     end
-    object FDQAlunoXaulaaluno_celular: TStringField
+    object FDQMatriculaaluno_celular: TStringField
       FieldName = 'aluno_celular'
       Origin = 'aluno_celular'
       Size = 12
     end
-    object FDQAlunoXaulaaluno_email: TStringField
+    object FDQMatriculaaluno_email: TStringField
       FieldName = 'aluno_email'
       Origin = 'aluno_email'
       Size = 100
     end
-    object FDQAlunoXaulaaluno_observacao: TStringField
+    object FDQMatriculaaluno_observacao: TStringField
       FieldName = 'aluno_observacao'
       Origin = 'aluno_observacao'
       Size = 200
     end
-    object FDQAlunoXaulaaluno_img: TBlobField
+    object FDQMatriculaaluno_img: TBlobField
       FieldName = 'aluno_img'
       Origin = 'aluno_img'
     end
@@ -196,8 +194,8 @@ object DM: TDM
     Connection = FDConnection1
     SQL.Strings = (
       'select * from AlunoXAula')
-    Left = 384
-    Top = 16
+    Left = 432
+    Top = 88
     object FDQAlunoXAulaAllalunoXaula_id: TFDAutoIncField
       FieldName = 'alunoXaula_id'
       Origin = 'alunoXaula_id'
@@ -819,6 +817,7 @@ object DM: TDM
       ReadOnly = True
     end
     object FDQFaixafaixa_descricao: TStringField
+      DisplayLabel = 'Faixa'
       FieldName = 'faixa_descricao'
       Origin = 'faixa_descricao'
       Size = 15

@@ -167,6 +167,15 @@ begin
   inherited;
   TabItem2.Enabled := True;
   TabControl1.TabIndex := 1;
+  EditCpfCliente.Text := EmptyStr;
+  EditNomeCliente.Text := EmptyStr;
+  EditCelular.Text := EmptyStr;
+  EditEmail.Text := EmptyStr;
+  EditPeso.Text := EmptyStr;
+  EditDtNascimento.Text := EmptyStr;
+  EditAltura.Text := EmptyStr;
+  LabelIdade.Text := EmptyStr;
+  Memo1.Text := EmptyStr;
   dm.FDQAlunosALL.Append;
 end;
 
@@ -237,6 +246,11 @@ begin
   EditNomeCliente.Text := dm.FDQAlunosALLAluno_nome.AsString;
   EditCelular.Text := dm.FDQAlunosALLAluno_celular.AsString;
   EditEmail.Text := dm.FDQAlunosALLAluno_email.AsString;
+  EditPeso.Text := dm.FDQAlunosALLpeso.AsString;
+  EditAltura.Text := dm.FDQAlunosALLaltrua.AsString;
+  EditDtNascimento.Text := dm.FDQAlunosALLdt_nascimento.AsString;
+  CalcNascimento;
+  ComboBoxFaixa.Items.IndexOf(dm.FDQAlunosALLfaixa.AsString);
   Memo1.Text := dm.FDQAlunosALLaluno_observacao.AsString;
   CalcNascimento;
   ComboBoxFaixa.ItemIndex := ComboBoxFaixa.Items.IndexOf
